@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.my_project";
+option java_outer_classname = "My_projectProto";
+option objc_class_prefix = "M_PJ";
+
+
+package my_project;
+
+// Defines the service
+service Mqtt_Service {
+    // Function invoked to send the request
+    rpc Connection_MQTT (Connect_Request) returns (Connect_Reply) {}
+
+    rpc Publish_MQTT (Publish_Request) returns (Publish_Reply) {}
+
+    rpc Subscribe_MQTT (Subscribe_Request) returns (Subscribe_Reply) {}
+}
+
+
+message Connect_Request {
+    
+    string address=1;
+}
+
+message Connect_Reply {
+   
+    string message=1;
+}
+
+
+message Publish_Request {
+    string address = 1;
+    string topic = 2;
+    string message = 3;  
+}
+
+message Publish_Reply {
+    string message=1;
+}
+
+message Subscribe_Request {
+    string address = 1;
+    string topic = 2;
+}
+message Subscribe_Reply {
+    string message=1;
+}
+
+
